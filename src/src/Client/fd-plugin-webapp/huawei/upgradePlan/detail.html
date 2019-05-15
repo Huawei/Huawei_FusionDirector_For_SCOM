@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>查看计划</title>
+    <link href="../../css/element.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <script src="../../scripts/vue.js"></script>
+    <script src="../../scripts/element.js"></script>
+    <script src="../../scripts/jquery-3.2.1.min.js"></script>
+    <script src="../../scripts/i18n/zh-CN.js"></script>
+    <script src="../../scripts/i18n/en.js"></script>
+    <script src="../i18n/en.js"></script>
+    <script src="../i18n/zh-CN.js"></script>
+    <script src="../../scripts/polyfill.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../../scripts/web-platform.js"></script>
+    <script src="../js/errorCode.js"></script>
+    <script src="../js/taskMessage.js"></script>
+    <script src="../../scripts/lodash.min.js"></script>
+    <script src="js/rest.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            min-width: 900px;
+        }
+
+        .serviceTit {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .serviceTit i {
+            width: 5px;
+            height: 100%;
+            background: #409eff;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .mt20{
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <el-row v-loading.fullscreen.lock="fullscreenLoading" :element-loading-text="i18ns.common.loading">
+            <el-form :model="planInfo" label-suffix=":" label-width="180px" label-position="left">
+                <h3>{{i18ns.upgradePlan.upgradePlan_information}}</h3>
+                <el-form-item label="Director">
+                    {{FDIp}}
+                </el-form-item>
+                <el-form-item :label="i18ns.upgradePlan.upgradePlan_planName">
+                    {{planInfo.Name}}
+                </el-form-item>
+                <el-form-item :label="i18ns.upgradePlan.upgradePlan_planDescription">
+                    {{planInfo.Description}}
+                </el-form-item>
+                <el-form-item :label="i18ns.upgradePlan.upgradePlan_upgradePlanStatus">
+                    {{getStatusTxt(planInfo.Status)}}
+                </el-form-item>
+                <!-- 版本信息 -->
+                <h3>{{i18ns.upgradePlan.upgradePlan_versionInformation}}</h3>
+                <el-row>
+                    <el-table :data="versionList" border header-row-class-name="my_table_header" ref="versionListTable">
+                        <el-table-column prop="PackageName" :label="i18ns.upgradePackageWarehouse.versionWarehouse_upgradeName"
+                            min-width="120" :show-overflow-tooltip="true"></el-table-column>
+                        <el-table-column prop="ProductType" :label="i18ns.upgradePackageWarehouse.versionWarehouse_productType">
+                            <template slot-scope="scope">
+                                {{planInfo.VersionType=='UpgradePackage'?scope.row.ProductType:scope.row.SupportModel}}
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="Version" :label="i18ns.upgradePackageWarehouse.versionWarehouse_version">
+                            <template slot-scope="scope">
+                                <p v-for="vis in scope.row.Version"><span>{{vis.Module}}：</span>{{vis.CurrentVer}}</p>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="Size" :label="i18ns.upgradePackageWarehouse.versionWarehouse_size">
+                            <template slot-scope="scope">
+                                {{unitFun(scope.row.Size)}}
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </el-row>
+
+                <!-- 设备信息 -->
+                <div v-show="taskStatu">
+                    <h3>{{i18ns.upgradePlan.upgradePlan_deviceInfomation}}</h3>
+                    <!-- 组信息 -->
+                    <div v-show="isShowGroup">
+                        <span class="serviceTit"><i></i>{{i18ns.upgradePlan.upgradePlan_groupSelectTip}}</span>
+                        <el-row>
+                            <el-table v-bind:data="groupList" border header-row-class-name="my_table_header">
+                                <el-table-column prop="Name" :label="i18ns.upgradePlan.upgradePlan_name">
+                                    <template slot-scope="scope">
+                                        <el-button type="text" @click="showGroupDetil(scope.row.Name)">{{scope.row.Name}}</el-button>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column prop="Description" :label="i18ns.upgradePlan.upgradePlan_descriptionTip">
+                                    <template slot-scope="scope">
+                                        {{scope.row.Description?scope.row.Description:'--'}}
+                                    </template>
+                                </el-table-column>
+                            </el-table>
+                        </el-row>
+                    </div>
+                    <!-- 设备信息 -->
+                    <div v-show="isShowDevices" class="mt20">
+                        <span class="serviceTit"><i></i>{{i18ns.upgradePlan.upgradePlan_deviceSelectTitle}}</span>
+                        <el-row>
+                            <el-table v-bind:data="deviceList" border header-row-class-name="my_table_header">
+                                <el-table-column prop="Name" :label="i18ns.upgradePlan.upgradePlan_name">
+                                    <template slot-scope="scope">
+                                        {{scope.row.Name?scope.row.Name:'--'}}
+                                    </template>
+                                </el-table-column>
+                                <el-table-column prop="BMCIP" :label="i18ns.upgradePlan.upgradePlan_BMCEMIP"></el-table-column>
+                                <el-table-column prop="SerialNumber" :label="i18ns.upgradePlan.upgradePlan_serialNumber"></el-table-column>
+                                <el-table-column prop="ProductType" :label="i18ns.upgradePlan.upgradePlan_productType"></el-table-column>
+                                <el-table-column prop="Groups" :label="i18ns.upgradePlan.upgradePlan_group">
+                                    <template slot-scope="scope">
+                                        <span>{{scope.row.Groups?scope.row.Groups.join(','):'--'}}</span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column prop="AssetTag" :label="i18ns.upgradePlan.upgradePlan_assetLabel">
+                                    <template slot-scope="scope">
+                                        {{scope.row.AssetTag?scope.row.AssetTag:'--'}}
+                                    </template>
+                                </el-table-column>
+
+                            </el-table>
+                        </el-row>
+                    </div>
+                </div>
+
+                <!-- 升级策略 -->
+                <h3>{{i18ns.upgradePlan.upgradePlan_upgradePolicy}}</h3>
+                <el-form-item :label="i18ns.upgradePlan.upgradePlan_executionPolicy">
+                    {{getExecutionPolicyTxt(planInfo.ExecutionPolicy)}}
+                </el-form-item>
+                <el-form-item :label="i18ns.upgradePlan.upgradePlan_effectPolicy">
+                    {{getEffectStatusTxt(planInfo.ResetImmediately)}}
+                </el-form-item>
+            </el-form>
+        </el-row>
+        <!-- 设备组的单个详情 -->
+        <el-dialog :title="groupItemTit" :visible.sync="groupDialog" width="80%">
+            <el-row>
+                <p><i class="el-icon-info" style="color:#409eff;font-style:normal;"></i>{{i18ns.upgradePlan.upgradePlan_filterDevice}}</p>
+            </el-row>
+            <el-table :data="groupItem" border style="width: 100%; margin-top: 10px;" header-row-class-name="my_table_header">
+                <el-table-column prop="IPv4Address.Address" :label="i18ns.upgradePlan.upgradePlan_BMCIP"></el-table-column>
+                <el-table-column prop="SerialNumber" :label="i18ns.upgradePlan.upgradePlan_serialNumber">
+                    <template slot-scope="scope">
+                        {{scope.row.SerialNumber?scope.row.SerialNumber:'--'}}
+                    </template>
+                </el-table-column>
+                <el-table-column prop="Model" :label="i18ns.upgradePlan.upgradePlan_productType">
+                    <template slot-scope="scope">
+                        {{scope.row.Model?scope.row.Model:'--'}}
+                    </template>
+                </el-table-column>
+                <el-table-column prop="Group" :label="i18ns.upgradePlan.upgradePlan_executeType">
+                    <template slot-scope="scope">
+                        <span>{{scope.row.Groups?scope.row.Groups:'--'}}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="Tag" :label="i18ns.upgradePlan.upgradePlan_label">
+                    <template slot-scope="scope">
+                        {{scope.row.Tag?scope.row.Tag:'--'}}
+                    </template>
+                </el-table-column>
+            </el-table>
+        </el-dialog>
+        <el-row>
+            <!-- 底部按钮 -->
+            <el-button style="margin-top:10px;" @click="back">{{i18ns.common.back}}</el-button>
+        </el-row>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                i18ns: [],
+                FDIp: '',
+                fullscreenLoading: false,
+                ID: '',
+                planInfo: {},
+                versionList: [],
+                allGroups: [],
+                groupIds: [],
+                deviceList: [],
+                isShowDevices: false,
+                taskStatu: false,
+                isShowGroup: false,
+                groupItem: [],
+                groupItemTit: '',
+                groupDialog: false,
+            },
+            computed: {
+                groupList: function () {
+                    var arr = [];
+                    for (var j = 0; j < this.groupIds.length; j++) {
+                        for (var i = 0; i < this.allGroups.length; i++) {
+                            if (this.allGroups[i].ID == this.groupIds[j]) {
+                                arr.push(this.allGroups[i]);
+                                this.isShowGroup = true;
+                            }
+                        }
+                    }
+                    return arr;
+                }
+            },
+            created: function () {
+                this.i18ns = getIn18();
+                this.FDIp = getCurrentFD();
+                this.ID = getQueryString('id');
+
+            },
+            mounted: function () {
+                var that = this;
+                setTimeout(function () {
+                    that.getUpgradePlanById();
+                    that.getGroupList();
+                }, 0);
+            },
+            methods: {
+                unitFun: function (Size) {
+                    return unitFun(Size)
+                },
+                getUpgradePlanById: function () {
+                    this.fullscreenLoading = true;
+                    var param = {
+                        ip: this.FDIp,
+                        id: this.ID
+                    }
+                    upgradePackageManage.getUpgradePlanById(param, function (ret) {
+                        app.fullscreenLoading = false;
+                        if (ret.code == '0') {
+                            var data = ret.data[0].data;
+                            app.planInfo = data;
+                            app.groupIds = data.DeviceGroupIDs;
+                            if (data.DeviceGroupIDs !== null && data.DeviceGroupIDs !== undefined) {
+                                app.taskStatu = data.DeviceGroupIDs.length > 0;
+                            }
+                            if (data.VersionType == 'UpgradePackage') {
+                                app.versionList = data.Packages;
+                            } else {
+                                if (data.BaselineInfo.FirmwarePackages) {
+                                    app.versionList = data.BaselineInfo.FirmwarePackages;
+                                }
+                            }
+                            var arry = [];
+                            if (data.TaskFlow !== null && data.TaskFlow !== undefined) {
+                                for (var i = 0; i < data.TaskFlow.length; i++) {
+                                    var item = data.TaskFlow[i];
+                                    arry = _.concat(arry, item.Devices);
+                                }
+                            }
+                            app.deviceList = arry;
+                            app.isShowDevices = arry.length > 0;
+                            if (!app.taskStatu) {
+                                app.taskStatu = app.isShowDevices;
+                            }
+                            console.log(app.planInfo);
+                        }
+                    })
+                },
+
+                /**
+                 * 获取升级计划状态
+                 */
+                getStatusTxt: function (data) {
+                    switch (data) {
+                        case 'Disable':
+                            return this.i18ns.upgradePlan.upgradePlan_notStart;
+                        case 'Enable':
+                            return this.i18ns.upgradePlan.upgradePlan_alreadyStart;
+                        case 'Close':
+                            return this.i18ns.upgradePlan.upgradePlan_alreadyFinish;
+                        default:
+                            return "";
+                    }
+                },
+
+                /**
+                 * 获取执行策略
+                 */
+                getExecutionPolicyTxt: function (data) {
+                    switch (data) {
+                        case 'Immediate':
+                            return this.i18ns.upgradePlan.upgradePlan_immediateExecution;
+                        case 'Period':
+                            return this.i18ns.upgradePlan.upgradePlan_cycleCheck;
+                        case 'SpecifiedTime':
+                            return this.planInfo.SpecifiedTime + this.i18ns.upgradePlan.upgradePlan_startUpgrade;
+                        default:
+                            return "";
+                    }
+                },
+
+                /**
+                 * 获取生效策略
+                 */
+                getEffectStatusTxt: function (data) {
+                    switch (data) {
+                        case false:
+                            return this.i18ns.upgradePlan.upgradePlan_effectiveLater;
+                        case true:
+                            return this.i18ns.upgradePlan.upgradePlan_immediateEffect;
+                        default:
+                            return "";
+                    }
+                },
+                /**
+                 * 获取组的列表
+                 */
+                getGroupList: function () {
+                    upgradePackageManage.getAllGRoupList({
+                        ip: this.FDIp
+                    }, function (ret) {
+                        if (ret.code == '0') {
+                            app.allGroups = ret.data[0].data.Groups;
+                        } else {
+                            var msg = getErrorMsg(ret);
+                            this.alertMsg(msg);
+                        }
+                    })
+                },
+
+                /**
+                 * 获取单个组详情
+                 */
+                showGroupDetil: function (name) {
+                    this.groupItemTit = name;
+                    this.groupDialog = true;
+
+                    upgradePackageManage.getGroupItemDetail({
+                        ip: this.FDIp,
+                        name: name,
+                        pageNo: 1,
+                        pageSize: 10
+                    }, function (ret) {
+                        if (ret.code == '0') {
+                            app.groupItem = ret.data[0].data.Members
+                        } else {
+                            var msg = getErrorMsg(ret);
+                            this.alertMsg(msg);
+                        }
+                    })
+                },
+
+                /**
+                 *  返回按钮方法 
+                 * **/
+                back: function () {
+                    window.location.href = './index.html?s=' + Math.random();
+                },
+
+
+            }
+        });
+    </script>
+</body>
+
+</html>

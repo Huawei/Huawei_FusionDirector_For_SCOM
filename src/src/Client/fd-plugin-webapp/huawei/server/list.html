@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>服务器列表</title>
+    <link href="../../css/element.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <script src="../../scripts/vue.js"></script>
+    <script src="../../scripts/element.js"></script>
+    <script src="../../scripts/jquery-3.2.1.min.js"></script>
+    <script src="../../scripts/i18n/zh-CN.js"></script>
+    <script src="../../scripts/i18n/en.js"></script>
+    <script src="../i18n/en.js"></script>
+    <script src="../i18n/zh-CN.js"></script>
+    <script src="../../scripts/polyfill.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../../scripts/web-platform.js"></script>
+    <script src="../js/errorCode.js"></script>
+    <script src="../../scripts/lodash.min.js"></script>
+    <script src="js/rest.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            min-width: 900px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- 顶部操作栏 -->
+        <el-row class="search-row">
+            <el-dropdown @command="commandClick">
+                <el-button>
+                    {{menuName}}
+                    <i class="el-icon-caret-bottom el-icon--right"></i>
+                </el-button>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item v-for="item in FDs" v-bind:command="item.name" v-bind:key="item.name">{{item.label}}</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+            <el-cascader :options="serverTypeOptions" v-model="selectedOptions" @change="serverTypeChange"
+                change-on-select></el-cascader>
+        </el-row>
+        <div v-show="selectedOptions[0]=='0'">
+            <el-table v-bind:data="serverListData" border style="width:100%;" v-loading="loading" :element-loading-text="i18ns.common.loading"
+                header-row-class-name="my_table_header">
+                <el-table-column prop="IPv4Address.Address" :label="i18ns.server.BMCIP">
+                </el-table-column>
+                <el-table-column prop="" :label="i18ns.server.status">
+                    <template slot-scope="scope">
+                        {{getServerStatusTxt(scope.row.ServerState,scope.row.Status?scope.row.Status.Health:'')}}
+                    </template>
+                </el-table-column>
+                <el-table-column prop="Model" :label="i18ns.server.deviceModel">
+                    <template slot-scope="scope">
+                        {{scope.row.Model?scope.row.Model:'--'}}
+                    </template>
+                </el-table-column>
+                <el-table-column prop="SerialNumber" :label="i18ns.server.serialNumber">
+                    <template slot-scope="scope">
+                        {{scope.row.SerialNumber?scope.row.SerialNumber:'--'}}
+                    </template>
+                </el-table-column>
+            </el-table>
+            <el-row class="pagination-row">
+                <el-col v-bind:span="24" style="text-align:left;">
+                    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                        v-bind:current-page="currentPage" v-bind:page-sizes="pageSizes" v-bind:page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper,slot" v-bind:total="total">
+                        <el-button style="border: 1px solid #c4c4c4;margin-left: 10px;">{{i18ns.common.confirm}}</el-button>
+                    </el-pagination>
+                </el-col>
+            </el-row>
+
+        </div>
+        <div v-show="selectedOptions[0]=='1'">
+            <el-table v-bind:data="enclosureListData" border style="width:100%;" v-loading="loading"
+                :element-loading-text="i18ns.common.loading" header-row-class-name="my_table_header">
+                <el-table-column prop="Name" :label="i18ns.server.name">
+                </el-table-column>
+                <el-table-column prop="Health" :label="i18ns.server.status">
+                    <template slot-scope="scope">
+                        {{getHealthStausTxt(scope.row.Health)}}
+                    </template>
+                </el-table-column>
+                <el-table-column prop="InsertedServerCnt" :label="i18ns.server.serverQuantity">
+                    <template slot-scope="scope">
+                        {{scope.row.InsertedServerCnt?scope.row.InsertedServerCnt:'--'}}
+                    </template>
+                </el-table-column>
+                <el-table-column prop="InsertedFanCnt" :label="i18ns.server.fanQuantity">
+                    <template slot-scope="scope">
+                        {{scope.row.InsertedFanCnt?scope.row.InsertedFanCnt:'--'}}
+                    </template>
+                </el-table-column>
+                <el-table-column prop="InsertedSwitchCnt" :label="i18ns.server.switchModuleQuantity">
+                    <template slot-scope="scope">
+                        {{scope.row.InsertedSwitchCnt?scope.row.InsertedSwitchCnt:'--'}}
+                    </template>
+                </el-table-column>
+                <el-table-column prop="InsertedPowerCnt" :label="i18ns.server.PSUQuantity">
+                    <template slot-scope="scope">
+                        {{scope.row.InsertedPowerCnt?scope.row.InsertedPowerCnt:'--'}}
+                    </template>
+                </el-table-column>
+                <!-- <el-table-column :label="i18ns.common.operation">
+                    <template slot-scope="scope">
+                        <el-button type="text" size="small" @click="showEnclosureInfo(scope.row)">{{i18ns.server.viewDeviceStatus}}</el-button>
+                    </template>
+                </el-table-column> -->
+            </el-table>
+            <el-row class="pagination-row">
+                <el-col v-bind:span="24" style="text-align:left;">
+                    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                        v-bind:current-page="currentPage" v-bind:page-sizes="pageSizes" v-bind:page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper,slot" v-bind:total="total">
+                        <el-button style="border: 1px solid #c4c4c4;margin-left: 10px;">{{i18ns.common.confirm}}</el-button>
+                    </el-pagination>
+                </el-col>
+            </el-row>
+
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                i18ns: [],
+                FDs: [],
+                FDIp: '',
+                menuName: '',
+                menuKey: '',
+                serverTypeOptions: [],
+                selectedOptions: [],
+                serverType: '',
+                serverModel: '',
+                serverListData: [],
+                enclosureListData: [],
+                /*显示表格数据加载中*/
+                loading: false,
+                currentPage: 1,
+                pageSizes: [20, 35, 50, 100],
+                pageSize: 20,
+                total: 0,
+            },
+            created: function () {
+                this.i18ns = getIn18();
+            },
+            mounted: function () {
+                setTimeout(function () {
+                    if (pluginName == 'DirectorForvCenter') {
+                        app.checkSetting();
+                    } else {
+                        getFDList(app.bindFD);
+                    }
+                }, 0);
+
+
+            },
+            methods: {
+                checkSetting() {
+                    serverManage.getSetting(function (ret) {
+                        if (ret.data == null) {
+                            localStorage.setItem("fromUrl", '../FDConfig/index.html');
+                            window.location.href = '../setting/index.html?s=' + Math.random();
+                        } else {
+                            getFDList(app.bindFD);
+                        }
+                    });
+                },
+                /**
+                 * 获取服务器健康状态
+                 **/
+                getServerStatusTxt: function (serverStatus, healthStatus) {
+                    return getServerStatusTxt(serverStatus, healthStatus);
+                },
+
+                /**
+                 * 获取设备健康状态
+                 **/
+                getHealthStausTxt: function (status) {
+                    return getHealthStatusTxt(status);
+                },
+
+                /**
+                 * 获取FD数据 回调函数
+                 * 
+                 * @param {any} ret 
+                 */
+                bindFD: function (ret) {
+                    if (ret.code === '0') {
+                        var lg = ret.data.length;
+                        if (lg > 0) {
+                            for (var i = 0; i <
+                                lg; i++) {
+                                if (ret.data[i].aliasName) {
+                                    this.FDs.push({
+                                        label: ret.data[i].aliasName,
+                                        name: ret.data[i].hostIp
+                                    });
+                                } else {
+                                    this.FDs.push({
+                                        label: ret.data[i].hostIp,
+                                        name: ret.data[i].hostIp
+                                    });
+                                }
+                            }
+                            var currentFD = getCurrentFD();
+                            if (currentFD) {
+                                var _currentFD = _.find(this.FDs, {
+                                    name: currentFD
+                                })
+                                if (_currentFD) {
+                                    this.FDIp = currentFD;
+                                    this.menuName = _currentFD.label; /*设置选项卡下拉框默认选中项*/
+                                    this.menuKey = _currentFD.name; /*设置选项卡下拉框默认选中项*/
+                                } else {
+                                    setCurrentFD(ret.data[0].hostIp);
+                                    this.FDIp = ret.data[0].hostIp;
+                                    this.menuName = this.FDs[0].label; /*设置选项卡下拉框默认选中项*/
+                                    this.menuKey = this.FDs[0].name; /*设置选项卡下拉框默认选中项*/
+                                }
+                            } else {
+                                setCurrentFD(ret.data[0].hostIp);
+                                this.FDIp = ret.data[0].hostIp;
+                                this.menuName = this.FDs[0].label; /*设置选项卡下拉框默认选中项*/
+                                this.menuKey = this.FDs[0].name; /*设置选项卡下拉框默认选中项*/
+                            }
+                            app.getServerType();
+                        } else {
+                            window.location.href = '../FDConfig/index.html?s=' + Math.random();
+                            /* alertMsg(getErrorMsg({
+                                code: '-90002'
+                            })) */
+                        }
+                    } else {
+                        var msg = getErrorMsg(ret);
+                        this.alertMsg(msg);
+                    }
+                },
+
+                /**
+                 * FD下拉框 点击切换事件
+                 * 
+                 * @param {any} command 
+                 * @param {any} com 
+                 */
+                commandClick: function (command, com) {
+                    this.menuName = com.$el.innerText;
+                    this.menuKey = command;
+                    this.FDIp = command;
+                    setCurrentFD(command);
+                    this.currentPage = 1;
+                    this.pageSizes = [10, 20, 50, 100];
+                    this.pageSize = 10;
+                    this.total = 0;
+                    this.getServerType();
+                },
+
+                /**
+                 * 服务器类型改变事件
+                 */
+                serverTypeChange: function (val) {
+                    console.log(val)
+                    this.serverType = val[0];
+                    this.serverModel = val.length == 1 ? '' : val[1];
+                    /*  this.currentPage=1;
+                     this.pageSizes= [10, 20, 50, 100];
+                     this.pageSize= 10;
+                     this.total= 0; */
+                    if (this.serverType == '0') {
+                        this.getServerListData();
+                    } else {
+                        this.getEnclosureListData();
+                    }
+                },
+
+                /**
+                 * 获取服务器列表数据
+                 * 
+                 */
+                getServerListData: function () {
+                    this.loading = true;
+                    this.serverListData = [];
+                    serverManage.getServerList({
+                        ip: this.FDIp,
+                        "groupId": this.serverModel,
+                        "pageNo": this.currentPage,
+                        "pageSize": this.pageSize
+                    }, this.bindServerList);
+                },
+
+                /**
+                 * 获取服务器列表数据 回调函数
+                 * 
+                 * @param {any} ret 
+                 */
+                bindServerList: function (ret) {
+                    this.serverListData = [];
+                    if (ret.code === '0') {
+                        var members = ret.data[0].data.Members;
+                        this.total = ret.data[0].data["Members@odata.count"];
+                        for (var i = 0; i < members.length; i++) {
+                            this.serverListData.push(members[i]);
+                        }
+
+                    } else {
+                        var msg = getErrorMsg(ret);
+                        this.alertMsg(msg);
+                    }
+                },
+
+                /**
+                 * 获取机框列表数据
+                 * 
+                 */
+                getEnclosureListData: function () {
+                    this.loading = true;
+                    this.enclosureListData = [];
+                    serverManage.getEnclosureList({
+                        ip: this.FDIp,
+                        "pageNo": this.currentPage,
+                        "pageSize": this.pageSize
+                    }, this.bindEnclosureList);
+                },
+
+                /**
+                 * 获取机框列表数据 回调函数
+                 * 
+                 * @param {any} ret 
+                 */
+                bindEnclosureList: function (ret) {
+                    this.enclosureListData = [];
+                    if (ret.code === '0') {
+                        var members = ret.data[0].data.Members;
+                        this.total = ret.data[0].data["Members@odata.count"];
+                        for (var i = 0; i < members.length; i++) {
+                            this.enclosureListData.push(members[i]);
+                        }
+                    } else {
+                        var msg = getErrorMsg(ret);
+                        this.alertMsg(msg);
+                    }
+                    app.loading = false; /*隐藏loading提示*/
+                },
+
+
+                /**
+                 * 消息提醒 弹出框
+                 * 
+                 * @param {any} msg 
+                 * @param {any} callback 
+                 */
+                alertMsg: function (msg, callback) {
+                    this.$alert(msg, this.i18ns.common.prompt, {
+                        confirmButtonText: this.i18ns.common.confirm,
+                        callback: function () {
+                            callback && callback()
+                        }
+                    });
+                },
+
+                /**
+                 * 设置当前显示数据的总数
+                 * 
+                 * @param {any} val 
+                 */
+                handleSizeChange: function (val) {
+                    this.pageSize = val;
+                    console.log(val)
+                    this.getServerListData();
+                },
+
+                /**
+                 * 切换当前显示页
+                 * 
+                 * @param {any} val 
+                 */
+                handleCurrentChange: function (val) {
+                    this.currentPage = val;
+                    console.log(val)
+                    this.getServerListData();
+                },
+
+                /**
+                 * 查看服务器明细信息
+                 * 
+                 * @param {any} row 
+                 */
+                showServerInfo: function (row) {
+                    window.location.href = '../server/serverInfo.html?id=' + row.DeviceID;
+                },
+
+                /**
+                 * 查看机框明细信息
+                 * 
+                 * @param {any} row 
+                 */
+                showEnclosureInfo: function (row) {
+                    var str = row['@odata.id'];
+                    window.location.href = '../server/enclosure.html?id=' + str.substr(str.lastIndexOf('/') +
+                        1);
+                },
+
+                /**
+                 * 服务器类型
+                 * 
+                 */
+                getServerType: function () {
+                    var lang = localStorage.getItem('lang');
+                    var options = [];
+                    if (lang == 'zhCN') {
+                        options = [{
+                            value: '0',
+                            label: '服务器',
+                            children: []
+                        }, {
+                            value: '1',
+                            label: '机框'
+                        }]
+                    } else {
+                        options = [{
+                            value: '0',
+                            label: 'Server',
+                            children: []
+                        }, {
+                            value: '1',
+                            label: 'Chassis'
+                        }]
+                    }
+                    this.serverTypeOptions = options;
+                    var param = {
+                        ip: this.FDIp,
+                        type: 'ModelSpecification'
+                    }
+                    this.selectedOptions = [options[0].value];
+                    this.serverModel = '';
+                    this.serverType = options[0].value;
+                    serverManage.getServerModelList(param, function (ret) {
+                        if (ret.code === '0') {
+                            for (var i = 0; i < ret.data[0].data.Groups.length; i++) {
+                                var item = ret.data[0].data.Groups[i];
+                                app.serverTypeOptions[0].children.push({
+                                    value: item.Name,
+                                    label: item.Name
+                                })
+                            }
+                        } else {
+                            var msg = getErrorMsg(ret);
+                            alertMsg(msg);
+                        }
+                    })
+                    app.getServerListData();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
