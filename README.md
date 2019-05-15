@@ -17,8 +17,9 @@ II. Description
 
 III. Supported Software Version
 
-   
-    
+    SCOM 2012R2 
+    SCOM 2016 
+
 IV.Software Requirements
 
     FusionDirecton 1.5.0
