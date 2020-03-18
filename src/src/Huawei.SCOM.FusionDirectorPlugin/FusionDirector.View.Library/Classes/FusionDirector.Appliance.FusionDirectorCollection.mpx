@@ -1,0 +1,36 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="FusionDirector.Appliance.FusionDirectorCollection" Abstract="false" Singleton="true" Accessibility="Public" Hosted="true" Base="System!System.LogicalHardware">
+          <Property ID="ResourceName" Type="string" />
+          <Property ID="Health" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+        </ClassType>
+      </ClassTypes>
+      <RelationshipTypes>
+        <RelationshipType ID="FusionDirector.Appliance.FusionDirectorCollection.Relationship" Accessibility="Public" Base="System!System.Hosting">
+          <Source ID="Source" Type="FusionDirector.Appliance" />
+          <Target ID="Target" Type="FusionDirector.Appliance.FusionDirectorCollection" />
+        </RelationshipType>
+      </RelationshipTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Appliance.FusionDirectorCollection">
+          <Name>FusionDirector Appliance FusionDirectorCollection</Name>
+          <Description>FusionDirector Appliance FusionDirectorCollection</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Appliance.FusionDirectorCollection" SubElementID="ResourceName">
+          <Name>ResourceName</Name>
+          <Description>ResourceName</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Appliance.FusionDirectorCollection" SubElementID="Health">
+          <Name>Health</Name>
+          <Description>Health</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

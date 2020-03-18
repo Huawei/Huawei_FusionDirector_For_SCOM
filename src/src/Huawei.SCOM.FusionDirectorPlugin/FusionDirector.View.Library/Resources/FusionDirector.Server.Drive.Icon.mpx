@@ -1,0 +1,10 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Categories>
+    <Category ID="FusionDirector.Server.Drive.Diagram.Category" Target="FusionDirector.Server.Drive.Diagram" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="FusionDirector.Server.Drive.Small.Category" Target="FusionDirector.Server.Drive.Small" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+  </Categories>
+  <Resources>
+    <Image ID="FusionDirector.Server.Drive.Diagram" FileName="FusionDirector.Server.Drive_80.png" Accessibility="Public" HasNullStream="false" Comment="FusionDirector Server Drive Image Diagram" />
+    <Image ID="FusionDirector.Server.Drive.Small" FileName="FusionDirector.Server.Drive_16.png" Accessibility="Public" HasNullStream="false" Comment="FusionDirector Server Drive Image Small" />
+  </Resources>
+</ManagementPackFragment>

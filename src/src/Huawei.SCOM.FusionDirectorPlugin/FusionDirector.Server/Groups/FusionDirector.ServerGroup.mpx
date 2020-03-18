@@ -1,0 +1,26 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="FusionDirector.ServerGroup" Base="System!System.Group" Accessibility="Internal" Abstract="false" Hosted="false" Singleton="true">
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="FusionDirector.ServerGroup" ImageID="FVL!FusionDirector.Server.Diagram" />
+      <ImageReference ElementID="FusionDirector.ServerGroup" ImageID="FVL!FusionDirector.Server.Small" />
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.ServerGroup">
+          <Name>Server Group</Name>
+          <Description>FusionDirector ServerGroup</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

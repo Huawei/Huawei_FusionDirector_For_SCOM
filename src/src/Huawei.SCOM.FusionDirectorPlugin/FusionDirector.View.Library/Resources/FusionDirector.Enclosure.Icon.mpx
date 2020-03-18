@@ -1,0 +1,10 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Categories>
+    <Category ID="FusionDirector.Enclosure.Diagram.Category" Target="FusionDirector.Enclosure.Diagram" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="FusionDirector.Enclosure.Small.Category" Target="FusionDirector.Enclosure.Small" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+  </Categories>
+  <Resources>
+    <Image ID="FusionDirector.Enclosure.Diagram" FileName="FusionDirector.Enclosure_80.png" Accessibility="Public" HasNullStream="false" Comment="FusionDirector Enclosure Image Diagram" />
+    <Image ID="FusionDirector.Enclosure.Small" FileName="FusionDirector.Enclosure_16.png" Accessibility="Public" HasNullStream="false" Comment="FusionDirector Enclosure Image Small" />
+  </Resources>
+</ManagementPackFragment>

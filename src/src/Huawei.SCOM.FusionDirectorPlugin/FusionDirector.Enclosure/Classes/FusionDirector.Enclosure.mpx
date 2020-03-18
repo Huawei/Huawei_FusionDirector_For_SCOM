@@ -1,0 +1,97 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="FusionDirector.Enclosure" Base="System!System.PhysicalEntity" Accessibility="Public" Abstract="false" Hosted="true" Singleton="false">
+          <Property ID="UnionId" Type="string" Key="true" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Name" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Type" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="FirmwareVersion" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Hostname" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="SerialNumber" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="PartNumber" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="ProductName" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="EnclosureState" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="StateReason" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="FanSpeedAdjustmentMode" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="HMMFloatIPv4Address" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Health" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+        </ClassType>
+      </ClassTypes>
+      <RelationshipTypes>
+        <RelationshipType ID="FusionDirector.Enclosure.Relationship" Accessibility="Public" Base="System!System.Hosting">
+          <Source ID="Source" Type="FusionDirector.EnclosureGroup" />
+          <Target ID="Target" Type="FusionDirector.Enclosure" />
+        </RelationshipType>
+      </RelationshipTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="FusionDirector.Enclosure" ImageID="FVL!FusionDirector.Enclosure.Diagram" />
+      <ImageReference ElementID="FusionDirector.Enclosure" ImageID="FVL!FusionDirector.Enclosure.Small" />
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Enclosure">
+          <Name>Enclosure</Name>
+          <Description>FusionDirector Enclosure</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="UnionId">
+          <Name>UnionId</Name>
+          <Description>UnionId</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="Name">
+          <Name>Name</Name>
+          <Description>Name</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="Type">
+          <Name>Type</Name>
+          <Description>Type</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="FirmwareVersion">
+          <Name>FirmwareVersion</Name>
+          <Description>FirmwareVersion</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="Hostname">
+          <Name>Hostname</Name>
+          <Description>Hostname</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="SerialNumber">
+          <Name>SerialNumber</Name>
+          <Description>SerialNumber</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="PartNumber">
+          <Name>PartNumber</Name>
+          <Description>PartNumber</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="ProductName">
+          <Name>ProductName</Name>
+          <Description>ProductName</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="EnclosureState">
+          <Name>EnclosureState</Name>
+          <Description>EnclosureState</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="StateReason">
+          <Name>StateReason</Name>
+          <Description>StateReason</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="FanSpeedAdjustmentMode">
+          <Name>FanSpeedAdjustmentMode</Name>
+          <Description>FanSpeedAdjustmentMode</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="HMMFloatIPv4Address">
+          <Name>HMMFloatIPv4Address</Name>
+          <Description>HMMFloatIPv4Address</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Enclosure" SubElementID="Health">
+          <Name>Health</Name>
+          <Description>Health</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

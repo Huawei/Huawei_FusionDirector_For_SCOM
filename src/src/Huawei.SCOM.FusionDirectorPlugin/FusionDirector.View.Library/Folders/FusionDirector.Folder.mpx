@@ -1,0 +1,47 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <Folders>
+      <Folder ID="FusionDirector.Root" Accessibility="Public" ParentFolder="SC!Microsoft.SystemCenter.Monitoring.ViewFolder.Root" />
+       <!--<Folder ID="FusionDirector.Alert" Accessibility="Public" ParentFolder="FusionDirector.Root" />
+      <Folder ID="FusionDirector.ApplianceState" Accessibility="Public" ParentFolder="FusionDirector.Root" />
+      <Folder ID="FusionDirector.MicroServiceState" Accessibility="Public" ParentFolder="FusionDirector.Root" />
+      <Folder ID="FusionDirector.Event" Accessibility="Public" ParentFolder="FusionDirector.Root" />
+      <Folder ID="FusionDirector.Diagram" Accessibility="Public" ParentFolder="FusionDirector.Root" />
+      <Folder ID="FusionDirector.HealthDashboard" Accessibility="Public" ParentFolder="FusionDirector.Root" />-->
+    </Folders>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Root">
+          <Name>Huawei FusionDirector System</Name>
+          <Description>Huawei FusionDirector System</Description>
+        </DisplayString>
+        <!--<DisplayString ElementID="FusionDirector.Alert">
+          <Name>Active Alert</Name>
+          <Description>Active Alert</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.ApplianceState">
+          <Name>Appliance State</Name>
+          <Description>Appliance State</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.MicroServiceState">
+          <Name>MicroService State</Name>
+          <Description>MicroService State</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Event">
+          <Name>Event</Name>
+          <Description>Event</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Diagram">
+          <Name>Group Diagram</Name>
+          <Description> Group Diagram</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.HealthDashboard">
+          <Name> Health Dashboard</Name>
+          <Description>Health Dashboard</Description>
+        </DisplayString>-->
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

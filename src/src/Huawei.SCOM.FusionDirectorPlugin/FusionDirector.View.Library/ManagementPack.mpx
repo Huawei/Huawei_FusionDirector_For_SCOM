@@ -1,0 +1,12 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Huawei.FusionDirector.View.Library">
+          <Name>Huawei.FusionDirector.View.Library</Name>
+          <Description>Huawei FusionDirector Library Management Pack：This library management pack contains Huawei Enclosures and Huawei Servers Folders.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

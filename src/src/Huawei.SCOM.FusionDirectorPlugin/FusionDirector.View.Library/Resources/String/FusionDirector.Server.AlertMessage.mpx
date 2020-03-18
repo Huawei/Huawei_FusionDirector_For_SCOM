@@ -1,0 +1,17 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <StringResources>
+      <StringResource ID="FusionDirector.Server.AlertMessage" />
+    </StringResources>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Server.AlertMessage">
+          <Name>Huawei Server Alert Message</Name>
+          <Description>The alert ({2}) generated at {3} for {0} ({1}) is caused by {4} To rectify the fault, do as follows{5} </Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

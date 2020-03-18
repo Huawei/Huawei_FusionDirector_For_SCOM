@@ -1,0 +1,122 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="FusionDirector.Server" Base="System!System.PhysicalEntity" Accessibility="Public" Abstract="false" Hosted="true" Singleton="false">
+          <Property ID="UnionId" Type="string" Key="true" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="UUID" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="HostName" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Model" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="BMCVersion" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="BiosVersion" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="TotalSystemMemoryGiB" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="TotalSystemStorageGiB" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="PowerState" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="ProcessorInfo" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="SerialNumber" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="ServerState" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="StateReason" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="iBMCIPv4Address" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Tag" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="ProfileModel" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="AssetTag" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Health" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+        </ClassType>
+      </ClassTypes>
+      <RelationshipTypes>
+        <RelationshipType ID="FusionDirector.Server.Relationship" Accessibility="Public" Base="System!System.Hosting">
+          <Source ID="Source" Type="FusionDirector.ServerGroup" />
+          <Target ID="Target" Type="FusionDirector.Server" />
+        </RelationshipType>
+      </RelationshipTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="FusionDirector.Server" ImageID="FVL!FusionDirector.Server.Diagram" />
+      <ImageReference ElementID="FusionDirector.Server" ImageID="FVL!FusionDirector.Server.Small" />
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Server">
+          <Name>Server</Name>
+          <Description>FusionDirector Server</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="UnionId">
+          <Name>UnionId</Name>
+          <Description>UnionId</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="UUID">
+          <Name>UUID</Name>
+          <Description>UUID</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="HostName">
+          <Name>HostName</Name>
+          <Description>HostName</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="Model">
+          <Name>Model</Name>
+          <Description>Model</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="BMCVersion">
+          <Name>BMCVersion</Name>
+          <Description>BMCVersion</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="BiosVersion">
+          <Name>BiosVersion</Name>
+          <Description>BiosVersion</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="TotalSystemMemoryGiB">
+          <Name>TotalSystemMemory/GiB</Name>
+          <Description>TotalSystemMemory/GiB</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="TotalSystemStorageGiB">
+          <Name>TotalSystemStorage/GiB</Name>
+          <Description>TotalSystemStorage/GiB</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="PowerState">
+          <Name>PowerState</Name>
+          <Description>PowerState</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="ProcessorInfo">
+          <Name>ProcessorInfo</Name>
+          <Description>ProcessorInfo</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="SerialNumber">
+          <Name>SerialNumber</Name>
+          <Description>SerialNumber</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="ServerState">
+          <Name>ServerState</Name>
+          <Description>ServerState</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="StateReason">
+          <Name>StateReason</Name>
+          <Description>StateReason</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="iBMCIPv4Address">
+          <Name>iBMCIPv4Address</Name>
+          <Description>iBMCIPv4Address</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="Tag">
+          <Name>Tag</Name>
+          <Description>Tag</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="ProfileModel">
+          <Name>ProfileModel</Name>
+          <Description>ProfileModel</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="AssetTag">
+          <Name>AssetTag</Name>
+          <Description>AssetTag</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Server" SubElementID="Health">
+          <Name>Health</Name>
+          <Description>Health</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

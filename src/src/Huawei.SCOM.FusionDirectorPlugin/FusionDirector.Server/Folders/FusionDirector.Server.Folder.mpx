@@ -1,0 +1,22 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <Folders>
+      <Folder ID="FusionDirector.Server.Folder" Accessibility="Public" ParentFolder="FVL!FusionDirector.Root" />
+      <Folder ID="FusionDirector.Server.Performance.Folder" Accessibility="Public" ParentFolder="FusionDirector.Server.Folder" />
+    </Folders>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Server.Folder">
+          <Name>Huawei Servers</Name>
+          <Description>Huawei Servers</Description>
+        </DisplayString> 
+        <DisplayString ElementID="FusionDirector.Server.Performance.Folder">
+          <Name>Performance View</Name>
+          <Description>FusionDirector Server Performance View</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

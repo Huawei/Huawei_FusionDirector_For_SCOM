@@ -1,0 +1,26 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="FusionDirector.EnclosureGroup" Accessibility="Public" Base="System!System.Group" Abstract="false" Hosted="false" Singleton="true">
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="FusionDirector.EnclosureGroup" ImageID="FVL!FusionDirector.Enclosure.Diagram" />
+      <ImageReference ElementID="FusionDirector.EnclosureGroup" ImageID="FVL!FusionDirector.Enclosure.Small" />
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.EnclosureGroup">
+          <Name>Enclosure Group</Name>
+          <Description>FusionDirector EnclosureGroup</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

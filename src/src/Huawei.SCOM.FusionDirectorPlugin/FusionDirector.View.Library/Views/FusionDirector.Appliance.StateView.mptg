@@ -1,0 +1,18 @@
+<TemplateGroup>
+  <Instances>
+    <Instance ID="Instanceaac2f41d1cd940b795894c063f089c83" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.CustomView" Version="1.0.0.0">
+      <CustomViewConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <ViewFolder>FusionDirector.Root</ViewFolder>
+        <ViewType>SC!Microsoft.SystemCenter.StateViewType</ViewType>
+        <ViewConfiguration />
+        <Visible>true</Visible>
+        <Accessibility>Internal</Accessibility>
+        <Id>FusionDirector.Appliance.StateView</Id>
+        <DisplayName>State View</DisplayName>
+        <Description>FusionDirector.Appliance.StateView</Description>
+        <Target>FusionDirector.Appliance</Target>
+        <Category>Operations</Category>
+      </CustomViewConfig>
+    </Instance>
+  </Instances>
+</TemplateGroup>

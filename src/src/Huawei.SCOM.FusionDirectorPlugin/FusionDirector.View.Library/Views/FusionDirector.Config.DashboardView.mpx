@@ -1,0 +1,70 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <Categories>
+    <Category
+      ID="WPFCategory"
+      Target="ViewLibAssembly"
+      Value="Visualization!Microsoft.SystemCenter.Visualization.WpfComponentAssembly" />
+  </Categories>
+
+  <Presentation>
+    <ComponentTypes>
+      <ComponentType ID="FdConfigControl" Accessibility="Public" />
+      <ComponentType ID="FdConfigDashboardHost" Accessibility="Public" />
+    </ComponentTypes>
+    <ComponentReferences>
+      <ComponentReference
+        ID="FdConfigDashboardRef"
+        Accessibility="Public"
+        TypeID="FdConfigDashboardHost"
+        Parent="FusionDirector.Root" />
+    </ComponentReferences>
+
+    <ComponentImplementations>
+      <ComponentImplementation
+        TypeId="FdConfigDashboardHost"
+        ID="FdConfigDashboardHostImplementation"
+        Accessibility="Public"
+        Platform="All">
+        <Composite>
+          <Component  TypeId="Visualization!Microsoft.SystemCenter.Visualization.ComponentContainer">
+            <Binding PropertyId="Visual">
+              <Component TypeId="FdConfigControl">
+              </Component>
+            </Binding>
+          </Component>
+        </Composite>
+      </ComponentImplementation>
+      <ComponentImplementation
+        TypeId="FdConfigControl"
+        ID="FdConfigControlImplementation"
+        Accessibility="Public"
+        Platform="All">
+        <Unit>
+          <ContractFactory>FusionDirectorPlugin.ViewLib.FdConfigDashboard</ContractFactory>
+        </Unit>
+      </ComponentImplementation>
+    </ComponentImplementations>
+  </Presentation>
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FdConfigDashboardHost">
+          <Name>FusionDirector Configuration Dashboard</Name>
+          <Description>FusionDirector Configuration Dashboard</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+
+  <Resources>
+    <Assembly
+      ID="ViewLibAssembly"
+      QualifiedName="FusionDirectorPlugin.ViewLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      FileName="FusionDirectorPlugin.ViewLib.dll"
+      Accessibility="Public"
+      HasNullStream="false" />
+  </Resources>
+
+</ManagementPackFragment>

@@ -1,0 +1,10 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Categories>
+    <Category ID="FusionDirector.Server.Power.Diagram.Category" Target="FusionDirector.Server.Power.Diagram" Value="System!System.Internal.ManagementPack.Images.DiagramIcon" />
+    <Category ID="FusionDirector.Server.Power.Small.Category" Target="FusionDirector.Server.Power.Small" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+  </Categories>
+  <Resources>
+    <Image ID="FusionDirector.Server.Power.Diagram" FileName="FusionDirector.Server.Power_80.png" Accessibility="Public" HasNullStream="false" Comment="FusionDirector Server Power Image Diagram" />
+    <Image ID="FusionDirector.Server.Power.Small" FileName="FusionDirector.Server.Power_16.png" Accessibility="Public" HasNullStream="false" Comment="FusionDirector Server Power Image Small" />
+  </Resources>
+</ManagementPackFragment>

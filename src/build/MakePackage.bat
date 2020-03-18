@@ -1,10 +1,10 @@
 @echo off
 
-rem get Huawei.SCCMPlugin.FusionDirector.PluginUI.dll version
+rem get FusionDirectorPlugin.Service.exe version
 set dllpath=%WORKSPACE%
 call set dllpath=%%dllpath:\=\\%%
 echo dllpath is: %dllpath%
-set dllfile=%dllpath%\\build\\Output\\Huawei.SCCMPlugin.FusionDirector.PluginUI.dll
+set dllfile=%dllpath%\\Release\\Configuration\\FusionDirectorPlugin.Service.exe
 echo dllfile is: %dllfile%
 
 FOR /F "tokens=2 delims==" %%I IN (
@@ -33,8 +33,8 @@ set mainVersion=%mainVersion1%.%mainVersion2%.%mainVersion3%
 echo mainVersion=%mainVersion%
 
 rem do package
-set SetupScriptPath=%WORKSPACE%\build\Setup.nsi
+set SetupScriptPath=%WORKSPACE%\build\SCOM.nsi
 echo execute %SetupScriptPath%
-"%WORKSPACE%\third_party\Install\NSIS-Unicode\makensis.exe" /DVERSION=%mainVersion% "%SetupScriptPath%"
+"%WORKSPACE%\build\NSIS-Unicode\makensis.exe" /DVERSION=%mainVersion% /DBUILD_NUMBER=%BUILD_NUMBER% "%SetupScriptPath%"
 
 Pause

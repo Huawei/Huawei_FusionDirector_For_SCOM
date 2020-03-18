@@ -1,0 +1,46 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="FusionDirector.Appliance" Base="System!System.PhysicalEntity" Accessibility="Public" Abstract="false" Hosted="false" Singleton="true">
+          <Property ID="HostName" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="IPAddress" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="SoftwareVersion" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Health" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="FusionDirector.Appliance" ImageID="FusionDirector.Appliance.Diagram" />
+      <ImageReference ElementID="FusionDirector.Appliance" ImageID="FusionDirector.Appliance.Small" />
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Appliance">
+          <Name>Appliance</Name>
+          <Description>FusionDirector Appliance</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Appliance" SubElementID="HostName">
+          <Name>HostName</Name>
+          <Description>HostName</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Appliance" SubElementID="IPAddress">
+          <Name>IPAddress</Name>
+          <Description>IPAddress</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Appliance" SubElementID="SoftwareVersion">
+          <Name>SoftwareVersion</Name>
+          <Description>SoftwareVersion</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Appliance" SubElementID="Health">
+          <Name>Health</Name>
+          <Description>Health</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

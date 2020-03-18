@@ -1,0 +1,18 @@
+<TemplateGroup>
+  <Instances>
+    <Instance ID="Instanceaac2f41d1cd940b795894c063f089c83" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.CustomView" Version="1.0.0.0">
+      <CustomViewConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <ViewFolder>FusionDirector.Server.Performance.Folder</ViewFolder>
+        <ViewType>SC!Microsoft.SystemCenter.PerformanceViewType</ViewType>
+        <ViewConfiguration>&lt;Criteria&gt;&lt;Counter&gt;InletTemp&lt;/Counter&gt;&lt;/Criteria&gt;</ViewConfiguration>
+        <Visible>true</Visible>
+        <Accessibility>Internal</Accessibility>
+        <Id>FusionDirector.Server.InletTemp.PerformanceView</Id>
+        <DisplayName>Inlet Temp(Centigrade)</DisplayName>
+        <Description>FusionDirector Server InletTemp Performance View</Description>
+        <Target>FusionDirector.Server</Target>
+        <Category>Operations</Category>
+      </CustomViewConfig>
+    </Instance>
+  </Instances>
+</TemplateGroup>

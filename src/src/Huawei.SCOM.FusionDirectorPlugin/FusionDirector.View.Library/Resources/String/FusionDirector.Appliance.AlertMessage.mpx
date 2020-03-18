@@ -1,0 +1,17 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <StringResources>
+      <StringResource ID="FusionDirector.Appliance.AlertMessage" />
+    </StringResources>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Appliance.AlertMessage">
+          <Name>FusionDirector Appliance Alert Message</Name>
+          <Description>The FusionDirector Appliance occur a alert ({0}) at {1},it caused by {2} We suggest the repair action is {3}</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

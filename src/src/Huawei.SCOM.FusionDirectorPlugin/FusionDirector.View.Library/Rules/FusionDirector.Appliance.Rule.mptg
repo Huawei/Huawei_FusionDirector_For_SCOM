@@ -1,0 +1,34 @@
+<TemplateGroup>
+  <Instances>
+    <Instance ID="Instancead122e8e2c2b461a804a5ac5069aa36f" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.CustomRule" Version="1.0.0.0">
+      <CustomRuleConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <Id>FusionDirector.Appliance.AlertRule</Id>
+        <DisplayName>FusionDirector Appliance Alert Rule </DisplayName>
+        <Description>FusionDirector Appliance Alert Rule </Description>
+        <Category>None</Category>
+        <ConfirmDelivery>false</ConfirmDelivery>
+        <Target>FusionDirector.Appliance</Target>
+        <Enabled>true</Enabled>
+        <Remotable>true</Remotable>
+        <Priority>Normal</Priority>
+        <DiscardLevel>100</DiscardLevel>
+        <DataSources>
+          <RuleDataSourceItem>
+            <DataSourceId>FusionDirector.Appliance.DS</DataSourceId>
+            <DataSourceType>SC!Microsoft.SystemCenter.SdkEventProvider</DataSourceType>
+          </RuleDataSourceItem>
+        </DataSources>
+        <ConditionDetectionConfig>&lt;Expression&gt;&lt;SimpleExpression&gt;&lt;ValueExpression&gt;&lt;XPathQuery&gt;Params/Param[4]&lt;/XPathQuery&gt;&lt;/ValueExpression&gt;&lt;Operator&gt;Equal&lt;/Operator&gt;&lt;ValueExpression&gt;&lt;Value&gt;ApplianceAlert&lt;/Value&gt;&lt;/ValueExpression&gt;&lt;/SimpleExpression&gt;&lt;/Expression&gt;</ConditionDetectionConfig>
+        <ConditionDetectionId>FusionDirector.Appliance.CD</ConditionDetectionId>
+        <ConditionDetectionType>System!System.ExpressionFilter</ConditionDetectionType>
+        <WriteActions>
+          <RuleWriteActionItem>
+            <WriteActionId>FusionDirector.Appliance.WA</WriteActionId>
+            <WriteActionConfig>&lt;Priority&gt;$Data/Params/Param[2]$&lt;/Priority&gt;&lt;Severity&gt;$Data/Params/Param[1]$&lt;/Severity&gt;&lt;AlertMessageId&gt;$MPElement[Name="FusionDirector.Appliance.AlertMessage"]$&lt;/AlertMessageId&gt;&lt;AlertParameters&gt;&lt;AlertParameter1&gt;$Data/EventData/ApplianceAlarm/AlarmName$&lt;/AlertParameter1&gt;&lt;AlertParameter2&gt;$Data/EventData/ApplianceAlarm/OccurTime$&lt;/AlertParameter2&gt;&lt;AlertParameter3&gt;$Data/EventData/ApplianceAlarm/PossibleCause$&lt;/AlertParameter3&gt;&lt;AlertParameter4&gt;$Data/EventData/ApplianceAlarm/Suggstion$&lt;/AlertParameter4&gt;&lt;/AlertParameters&gt;&lt;Suppression /&gt;&lt;!--AlarmType--&gt;&lt;Custom1&gt;$Data/EventData/ApplianceAlarm/AlarmType$&lt;/Custom1&gt;&lt;!--Sn--&gt;&lt;Custom2&gt;$Data/EventData/ApplianceAlarm/Sn$&lt;/Custom2&gt;&lt;!--AlarmName--&gt;&lt;Custom3&gt;$Data/EventData/ApplianceAlarm/AlarmName$&lt;/Custom3&gt;&lt;!--PossibleCause--&gt;&lt;Custom4&gt;$Data/EventData/ApplianceAlarm/PossibleCause$&lt;/Custom4&gt;&lt;!--Additional--&gt;&lt;Custom5&gt;$Data/EventData/ApplianceAlarm/Additional$&lt;/Custom5&gt;&lt;!--Suggstion--&gt;&lt;Custom6&gt;$Data/EventData/ApplianceAlarm/Suggstion$&lt;/Custom6&gt;&lt;!--OccurTime--&gt;&lt;Custom7&gt;$Data/EventData/ApplianceAlarm/OccurTime$&lt;/Custom7&gt;</WriteActionConfig>
+            <WriteActionType>Health!System.Health.GenerateAlert</WriteActionType>
+          </RuleWriteActionItem>
+        </WriteActions>
+      </CustomRuleConfig>
+    </Instance>
+  </Instances>
+</TemplateGroup>
