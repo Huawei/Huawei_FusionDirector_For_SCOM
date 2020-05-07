@@ -1,0 +1,87 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="FusionDirector.Entity" Base="System!System.PhysicalEntity" Accessibility="Public" Abstract="false" Hosted="false" Singleton="false">
+          <Property ID="UniqueId" Type="string" Key="true" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="HostIP" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="AliasName" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="LoginAccount" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="LoginPd" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="Port" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="EventUserName" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="EventPd" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="SubscribeId" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="SubscribeStatus" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="LatestSubscribeInfo" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="LastModifyTime" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+          <Property ID="CreateTime" Type="string" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" />
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="FusionDirector.Entity" ImageID="FusionDirector.Appliance.Diagram" />
+      <ImageReference ElementID="FusionDirector.Entity" ImageID="FusionDirector.Appliance.Small" />
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Entity">
+          <Name>Entity</Name>
+          <Description>FusionDirector Entity</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="HostIP">
+          <Name>HostIP</Name>
+          <Description>HostIP</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="AliasName">
+          <Name>AliasName</Name>
+          <Description>AliasName</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="LoginAccount">
+          <Name>LoginAccount</Name>
+          <Description>LoginAccount</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="LoginPd">
+          <Name>LoginPd</Name>
+          <Description>LoginPd</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="Port">
+          <Name>Port</Name>
+          <Description>Port</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="EventUserName">
+          <Name>EventUserName</Name>
+          <Description>EventUserName</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="EventPd">
+          <Name>EventPd</Name>
+          <Description>EventPd</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="SubscribeId">
+          <Name>SubscribeId</Name>
+          <Description>SubscribeId</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="SubscribeStatus">
+          <Name>SubscribeStatus</Name>
+          <Description>SubscribeStatus</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="LatestSubscribeInfo">
+          <Name>LatestSubscribeInfo</Name>
+          <Description>LatestSubscribeInfo</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="LastModifyTime">
+          <Name>LastModifyTime</Name>
+          <Description>LastModifyTime</Description>
+        </DisplayString>
+        <DisplayString ElementID="FusionDirector.Entity" SubElementID="CreateTime">
+          <Name>CreateTime</Name>
+          <Description>CreateTime</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

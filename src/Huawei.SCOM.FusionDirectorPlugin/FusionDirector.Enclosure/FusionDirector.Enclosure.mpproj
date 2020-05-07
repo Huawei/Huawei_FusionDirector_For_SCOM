@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{bfc81ede-53c8-4e40-b99a-63c1eecbf54a}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <Name>Huawei.FusionDirector.Enclosure.Library</Name>
+    <ManagementPackName>Huawei.FusionDirector.Enclosure.Library</ManagementPackName>
+    <Version>1.0.0.0</Version>
+    <MpFrameworkVersion>v7.0.2</MpFrameworkVersion>
+    <MpFrameworkProfile>OM</MpFrameworkProfile>
+    <ProductVersion>1.1.0.0</ProductVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Release\MPFiles\</OutputPath>
+    <GenerateSealed>True</GenerateSealed>
+    <Company>Huawei Technologies Co. Ltd</Company>
+    <Copyright>Copyright (c) Huawei Technologies Co. Ltd. All rights reserved.</Copyright>
+    <DelaySigning>False</DelaySigning>
+    <AssemblyOriginatorKeyFile>..\mplib\fd.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>..\..\Release\MPFiles\</OutputPath>
+    <DelaySigning>False</DelaySigning>
+    <Company>Huawei Technologies Co. Ltd</Company>
+    <Copyright>Copyright (c) Huawei Technologies Co. Ltd. All rights reserved.</Copyright>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\mplib\fd.snk</AssemblyOriginatorKeyFile>
+    <GenerateSealed>True</GenerateSealed>
+  </PropertyGroup>
+  <ItemGroup>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Library">
+      <Alias>SC</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.Windows.Library">
+      <Alias>Windows</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Health.Library">
+      <Alias>Health</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Library">
+      <Alias>System</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Visualization.Library">
+      <Alias>Visualization</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes" />
+    <Folder Include="Groups" />
+    <Folder Include="Discoveries" />
+    <Folder Include="Monitors" />
+    <Folder Include="Monitors\Classes" />
+    <Folder Include="Monitors\Groups" />
+    <Folder Include="Folders" />
+    <Folder Include="Rules" />
+    <Folder Include="Rules\Enclosure" />
+    <Folder Include="Scripts" />
+    <Folder Include="Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\FusionDirector.Enclosure.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Discoveries\FusionDirector.EnclosureGroup.Discovery.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Discoveries\FusionDirector.EnclosureGroup.Discovery.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Folders\FusionDirector.Enclosure.Folder.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Groups\FusionDirector.EnclosureGroup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManagementPack.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Classes\FusionDirector.Enclosure.Monitor.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Monitors\Classes\FusionDirector.Enclosure.Monitor.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Monitors\Groups\FusionDirector.Enclosure.Monitor.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Monitors\Groups\FusionDirector.Enclosure.Monitor.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.10.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.11.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.12.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.13.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.14.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.15.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.16.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.17.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.18.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.19.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.20.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.21.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.22.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.23.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.24.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.25.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.26.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.27.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.28.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Enclosure\Alarm.To.Alert.Rule.29.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\FusionDirector.Enclosure.AlertView.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Views\FusionDirector.Enclosure.AlertView.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FusionDirector.Enclosure.DiagramView.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Views\FusionDirector.Enclosure.DiagramView.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FusionDirector.Enclosure.StateView.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Views\FusionDirector.Enclosure.StateView.mptg</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FusionDirector.View.Library\FusionDirector.View.Library.mpproj">
+      <Name>FusionDirector.View.Library</Name>
+      <Project>{804df9c6-6f0d-487a-afc2-b2a69992dd92}</Project>
+      <Private>True</Private>
+      <Alias>FVL</Alias>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Discoveries\FusionDirector.EnclosureGroup.Discovery.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Monitors\Classes\FusionDirector.Enclosure.Monitor.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Monitors\Groups\FusionDirector.Enclosure.Monitor.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Views\FusionDirector.Enclosure.AlertView.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Views\FusionDirector.Enclosure.DiagramView.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Views\FusionDirector.Enclosure.StateView.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\GetStatus.vbs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
+</Project>

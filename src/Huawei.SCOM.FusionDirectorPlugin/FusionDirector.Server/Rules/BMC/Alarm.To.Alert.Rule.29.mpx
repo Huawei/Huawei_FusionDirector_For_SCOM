@@ -1,0 +1,89 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Rules>
+      <Rule ID="FusionDirector.Server.Alarm.To.SCOM.Alert.Rule.29" Target="FusionDirector.Server" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+        <Category>Alert</Category>
+        <DataSources>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.EventProvider">
+            <LogName>Fusion Director Events</LogName>
+            <Expression>
+              <And>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="String">PublisherName</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="String">Fusion Director Subscription</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="String">Params/Param[3]</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="String">$Target/Property[Type="FusionDirector.Server"]/UnionId$</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery>EventDisplayNumber</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="UnsignedInteger">29</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+              </And>
+            </Expression>
+          </DataSource>
+        </DataSources>
+        <WriteActions>
+          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert">
+            <!-- Event Log Params is 1-based -->
+            <Priority>$Data/Params/Param[6]$</Priority>
+            <Severity>$Data/Params/Param[7]$</Severity>
+            <AlertName>$Data/Params/Param[5]$</AlertName>
+            <AlertDescription>$Data[Default='']/EventDescription$</AlertDescription>
+            <AlertOwner />
+            <Suppression>
+              <!-- Suppression by alarm serial number -->
+              <SuppressionValue>$Data/Params/Param[4]$</SuppressionValue>
+            </Suppression>
+            <!-- FusionDirector::IP-Address -->
+            <Custom1>$Data/Params/Param[2]$</Custom1>
+            <!-- Monitor Object Id -->
+            <Custom2>$Data/Params/Param[3]$</Custom2>
+            <!-- Alarm Serial Number -->
+            <Custom3>$Data/Params/Param[4]$</Custom3>
+            <!-- Alarm Channel/Alarm Name -->
+            <Custom4>$Data/Params/Param[5]$</Custom4>
+            <!-- Alarm Priority -->
+            <Custom5>$Data/Params/Param[6]$</Custom5>
+            <!-- Alarm Severity -->
+            <Custom6>$Data/Params/Param[7]$</Custom6>
+            <!-- Alarm EventSource+Event Subject -->
+            <Custom7>$Data/Params/Param[8]$</Custom7>
+          </WriteAction>
+        </WriteActions>
+      </Rule>
+    </Rules>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="FusionDirector.Server.Alarm.To.SCOM.Alert.Rule.29">
+          <Name>Fusion Director Enclosure alarms to SCOM alerts rule 29</Name>
+          <Description>Fusion Director Enclosure alarms to SCOM alerts rule 29</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

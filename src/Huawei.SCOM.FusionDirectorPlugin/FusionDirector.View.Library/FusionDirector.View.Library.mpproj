@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{804df9c6-6f0d-487a-afc2-b2a69992dd92}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <Name>Huawei.FusionDirector.View.Library</Name>
+    <ManagementPackName>Huawei.FusionDirector.View.Library</ManagementPackName>
+    <Version>1.0.0.0</Version>
+    <MpFrameworkVersion>v7.0.2</MpFrameworkVersion>
+    <MpFrameworkProfile>OM</MpFrameworkProfile>
+    <ProductVersion>1.1.0.0</ProductVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Release\MPFiles\</OutputPath>
+    <GenerateSealed>True</GenerateSealed>
+    <Company>Huawei Technologies Co. Ltd</Company>
+    <Copyright>Copyright (c) Huawei Technologies Co. Ltd. All rights reserved.</Copyright>
+    <DelaySigning>False</DelaySigning>
+    <AssemblyOriginatorKeyFile>..\mplib\fd.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>..\..\Release\MPFiles\</OutputPath>
+    <DelaySigning>False</DelaySigning>
+    <Company>Huawei Technologies Co. Ltd</Company>
+    <Copyright>Copyright (c) Huawei Technologies Co. Ltd. All rights reserved.</Copyright>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\mplib\fd.snk</AssemblyOriginatorKeyFile>
+    <GenerateSealed>True</GenerateSealed>
+  </PropertyGroup>
+  <ItemGroup>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Library">
+      <Alias>SC</Alias>
+      <PackageToBundle>false</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.Windows.Library">
+      <Alias>Windows</Alias>
+      <PackageToBundle>false</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Health.Library">
+      <Alias>Health</Alias>
+      <PackageToBundle>false</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Library">
+      <Alias>System</Alias>
+      <PackageToBundle>false</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Visualization.Library">
+      <Alias>Visualization</Alias>
+      <PackageToBundle>false</PackageToBundle>
+    </ManagementPackReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes" />
+    <Folder Include="Groups" />
+    <Folder Include="Monitors" />
+    <Folder Include="Monitors\Classes" />
+    <Folder Include="Rules" />
+    <Folder Include="Resources\String" />
+    <Folder Include="Scripts" />
+    <Folder Include="Resources" />
+    <Folder Include="Folders" />
+    <Folder Include="Resources\Icon" />
+    <Folder Include="Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\FusionDirector.Entity.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\FusionDirector.Appliance.EnclosureCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\FusionDirector.Appliance.EventCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\FusionDirector.Appliance.FusionDirectorCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\FusionDirector.Appliance.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\FusionDirector.Appliance.PerformanceCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\FusionDirector.Appliance.ServerCollection.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Folders\FusionDirector.Folder.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Groups\BaseGroup.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManagementPack.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Classes\FusionDirector.Appliance.EnclosureCollection.Monitor.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Monitors\Classes\FusionDirector.Appliance.EnclosureCollection.Monitor.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Monitors\Classes\FusionDirector.Appliance.EventCollection.Monitor.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Monitors\Classes\FusionDirector.Appliance.EventCollection.Monitor.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Monitors\Classes\FusionDirector.Appliance.FusionDirectorCollection.Monitor.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Monitors\Classes\FusionDirector.Appliance.FusionDirectorCollection.Monitor.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Monitors\Classes\FusionDirector.Appliance.Monitor.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Monitors\Classes\FusionDirector.Appliance.Monitor.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Monitors\Classes\FusionDirector.Appliance.PerformanceCollection.Monitor.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Monitors\Classes\FusionDirector.Appliance.PerformanceCollection.Monitor.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Monitors\Classes\FusionDirector.Appliance.ServerCollection.Monitor.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Monitors\Classes\FusionDirector.Appliance.ServerCollection.Monitor.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Appliance.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Enclosure.FanSlot.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Enclosure.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Enclosure.ManagerSlot.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Enclosure.PowerSlot.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Enclosure.ServerSlot.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Enclosure.SwitchSlot.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.Drive.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.Fan.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.Memory.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.NetworkAdapter.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.PCIeCard.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.Power.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.Processor.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.RaidCard.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\FusionDirector.Server.RaidCard.StorageController.Icon.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\String\FusionDirector.Appliance.AlertMessage.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\String\FusionDirector.Server.AlertMessage.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\String\FusionDirector.Enclosure.AlertMessage.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\FusionDirector.Appliance.Rule.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Rules\FusionDirector.Appliance.Rule.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FusionDirector.Config.DashboardView.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\FusionDirector.Appliance.AlertView.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Views\FusionDirector.Appliance.AlertView.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FusionDirector.Appliance.EventView.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Views\FusionDirector.Appliance.EventView.mptg</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FusionDirector.Appliance.StateView.mptg.mpx">
+      <SubType>Code</SubType>
+      <DependentUpon>Views\FusionDirector.Appliance.StateView.mptg</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.FanSlot_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.FanSlot_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.ManagerSlot_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.ManagerSlot_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.PowerSlot_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.PowerSlot_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.ServerSlot_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.ServerSlot_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.SwitchSlot_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure.SwitchSlot_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Enclosure_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Drive_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Drive_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Fan_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Fan_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Memory_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Memory_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.NetworkAdapter_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.NetworkAdapter_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.PcIeCard_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.PcIeCard_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Power_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Power_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Processor_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.Processor_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.RaidCard_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.RaidCard_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\GetStatus.vbs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.RaidCard.StorageController_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Server.RaidCard.StorageController_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Appliance_16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon\FusionDirector.Appliance_80.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Monitors\Classes\FusionDirector.Appliance.EnclosureCollection.Monitor.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Monitors\Classes\FusionDirector.Appliance.EventCollection.Monitor.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Monitors\Classes\FusionDirector.Appliance.FusionDirectorCollection.Monitor.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Monitors\Classes\FusionDirector.Appliance.Monitor.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Monitors\Classes\FusionDirector.Appliance.PerformanceCollection.Monitor.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Monitors\Classes\FusionDirector.Appliance.ServerCollection.Monitor.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Rules\FusionDirector.Appliance.Rule.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Views\FusionDirector.Appliance.AlertView.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Views\FusionDirector.Appliance.EventView.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+    <Content Include="Views\FusionDirector.Appliance.StateView.mptg">
+      <SubType>Content</SubType>
+      <Generator>FragmentGenerator</Generator>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FusionDirectorPlugin.ViewLib\FusionDirectorPlugin.ViewLib.csproj">
+      <Name>FusionDirectorPlugin.ViewLib</Name>
+      <Project>{800ae076-991f-431c-b164-9a031230f2f8}</Project>
+      <Private>True</Private>
+      <PackageToBundle>True</PackageToBundle>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
+</Project>
