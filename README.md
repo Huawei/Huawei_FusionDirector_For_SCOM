@@ -9,7 +9,7 @@ I. General Information
 
     Name:     Huawei_FusionDirector_For_SCOM plugin
     Category: Monitoring
-    version : 1.0.11.411
+    version : 1.0.15
     
 II. Description
 
