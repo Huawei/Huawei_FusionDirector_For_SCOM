@@ -18,11 +18,13 @@ II. Description
 III. Supported Software Version
 
     SCOM 2012R2 
-    SCOM 2016 
+    SCOM 2016
+    SCOM 2019
 
 IV.Software Requirements
 
     FusionDirecton 1.5.0
+    FusionDirecton 1.5.2
 
 V. Supported Device
 
