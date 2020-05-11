@@ -23,7 +23,6 @@ III. Supported Software Version
 
 IV.Software Requirements
 
-    FusionDirecton 1.5.0
     FusionDirecton 1.5.2
 
 V. Supported Device
