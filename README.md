@@ -11,18 +11,21 @@ I. General Information
     Category: Monitoring、Alarm
     version : 1.0.15
     
-II. Description
-
+II. Function Description
+    
     The Huawei SCOM plug-in is a plug-in integrated in the System Center Operations Manager software and used for Huawei server management.
     By adding FusionDirector, it can monitor the health status and alarm information of Huawei servers.
-
-III. Function Description
-
     1. View the information of servers and chassis.
     2. View the health status of servers and chassis.
     3. View the alarm information of servers and chassis.
     4. View the topologies of servers and chassis.
     5. View the performance curves of servers.
+
+III. Version notice
+    
+    1. Compatible with SCOM 2019.
+    2. Interconnected with FD 1.6.1.SPC2/1.6.0.SPC1.
+    3. Security rectification.
 
 IV. Additional Resources
 
