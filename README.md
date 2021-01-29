@@ -2,37 +2,32 @@
 
 
 **********************************************************************************
-Huawei_FusionDirector_For_SCOM plugin
+Huawei FusionDirector for System Center Operations Manager plugin
 **********************************************************************************
 
 I. General Information 
 
     Name:     Huawei_FusionDirector_For_SCOM plugin
-    Category: Monitoring
+    Category: Monitoring、Alarm
     version : 1.0.15
     
 II. Description
 
-    The Huawei_FusionDirector_For_vCenter Plugin is a plug-in integrated in the SCOM and used for Huawei Server management. It can be used to connect to multiple FusionDirector and view the servers managed by FusionDirector.
+    The Huawei SCOM plug-in is a plug-in integrated in the System Center Operations Manager software and used for Huawei server management.
+    By adding FusionDirector, it can monitor the health status and alarm information of Huawei servers.
 
-III. Supported Software Version
+III. Function Description
 
-    SCOM 2012R2 
-    SCOM 2016
-    SCOM 2019
+    1. View the information of servers and chassis.
+    2. View the health status of servers and chassis.
+    3. View the alarm information of servers and chassis.
+    4. View the topologies of servers and chassis.
+    5. View the performance curves of servers.
 
-IV.Software Requirements
-
-    FusionDirecton 1.5.2
-
-V. Supported Device
-
-    Huawei Blade Server:        CH121 V5,CH242 V5,CH121 V3,CH242 V3
-    Huawei Rack Server:         1288H V5, 2288H V5, 2488 V5,2488H V5,8100 V5,RH2288H V3
-    Chassis：                   E9000 (MM920)
-    
-    For more details about compatible with Huawei Server,Please refer to the Server Devices sheet of excel document of FusionDirector
-
-VI. Additional Resources
+IV. Additional Resources
 
     For more information consult User Guide: https://github.com/Huawei/Huawei_FusionDirector_For_SCOM/tree/master/docs
+  
+V. Open Source Software Notice
+    
+    https://github.com/Huawei/Huawei_FusionDirector_For_SCOM/blob/master/docs/Open%20Source%20Software%20Notice.doc
