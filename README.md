@@ -24,7 +24,7 @@ II. Function Description
 III. Version notice
     
     1. Compatible with SCOM 2019.
-    2. Interconnected with FD 1.6.1.SPC2/1.6.0.SPC1.
+    2. Interconnected with FD 1.6.1.SPC2/1.6.0.SPC1/1.7.1.
     3. Security rectification.
 
 IV. Additional Resources
