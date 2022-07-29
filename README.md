@@ -21,16 +21,28 @@ II. Function Description
     4. View the topologies of servers and chassis.
     5. View the performance curves of servers.
 
-III. Version notice
+III. Supported software versions
     
-    1. Compatible with SCOM 2019.
-    2. Interconnected with FD 1.6.1.SPC2/1.6.0.SPC1/1.7.1.
-    3. Security rectification.
+    SCOM 2012R2 
+    SCOM 2016 
+    SCOM 2019
 
-IV. Additional Resources
+IV. Software Requirements
+    FusionDirector 1.5.2
+    FusionDirector 1.6.0.SPC1
+    FusionDirector 1.6.1.SPC2
+    FusionDirector 1.7.1
+
+V. Supported Device
+ 
+    Rack server        : RH2288H V3,1288H V5,2288H V5,2488 V5,2488H V5,2288 V5
+    Blade server       : E9000(MM920),CH121 V3,CH242 V3,CH121 V5,CH242 V5
+    KunLun server      : 9008 V5
+
+VI. Additional Resources
 
     For more information consult User Guide: https://github.com/Huawei/Huawei_FusionDirector_For_SCOM/tree/master/docs
   
-V. Open Source Software Notice
+VII. Open Source Software Notice
     
     https://github.com/Huawei/Huawei_FusionDirector_For_SCOM/blob/master/docs/Open%20Source%20Software%20Notice.doc
